@@ -13,7 +13,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<NavBar />}>
-            <Route path="home" element={<HomePage/>} />
+            <Route index element={<HomePage/>} />
             <Route path="about" element={<AboutPage />} />
             <Route path="music" element={<MusicPage />} />
             <Route path="author" element={<BookPage />} />

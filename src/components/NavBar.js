@@ -37,7 +37,7 @@ const Navbar = () => {
         aria-label="Main Navigation"
       >
          <NavLink
-          to="/home"
+          to="/"
           viewTransition
           className={({ isActive, isPending }) =>
             isActive

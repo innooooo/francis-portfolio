@@ -9,6 +9,7 @@
     "eject": "react-scripts eject"
   },
   "dependencies": {
+    "lucide-react": "^0.553.0",
     "react-router-dom": "^7.9.5",
     "react-scripts": "^5.0.1",
     "web-vitals": "^5.1.0"
@@ -24,5 +25,12 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "eslint-plugin-react-hooks": "^7.0.1"
+  },
+  "rules": {
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn"
   }
 }

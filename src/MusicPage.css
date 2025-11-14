@@ -1,0 +1,474 @@
+/* MusicCatalog.css */
+
+/* -------------------------
+   Root / variables
+   ------------------------- */
+:root {
+  --bg: #0f1724;
+  --card-bg: rgba(255, 255, 255, 0.04);
+  --muted: #9aa4b2;
+  --accent: #7c5cff;
+  --glass-border: rgba(255,255,255,0.06);
+  --glass-shadow: 0 6px 20px rgba(12, 14, 20, 0.6);
+  --transition: 300ms;
+  --radius: 12px;
+  --mc-max-width: 1200px;
+  --text: #e6eef8;
+}
+
+/* -------------------------
+   Base layout
+   ------------------------- */
+.music-catalog-root {
+  color: var(--text);
+  background: linear-gradient(180deg, rgba(11,12,16,1) 0%, rgba(5,7,10,1) 100%);
+  min-height: 100vh;
+  padding: 24px;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  box-sizing: border-box;
+}
+
+/* center content */
+.mc-header,
+.mc-main {
+  max-width: var(--mc-max-width);
+  margin: 0 auto 18px;
+}
+
+/* -------------------------
+   Header: channel info & controls
+   ------------------------- */
+.mc-header {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+/* channel area */
+.mc-channel {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.mc-avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 999px;
+  overflow: hidden;
+  flex-shrink: 0;
+  box-shadow: var(--glass-shadow);
+  border: 1px solid var(--glass-border);
+  background: linear-gradient(135deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mc-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.mc-avatar-placeholder {
+  font-weight: 700;
+  font-size: 26px;
+  color: var(--muted);
+}
+
+.mc-channel-meta .mc-channel-title {
+  font-size: 20px;
+  margin: 0;
+  letter-spacing: -0.2px;
+}
+
+.mc-channel-meta .mc-channel-stats {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 4px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+/* controls */
+.mc-controls {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+/* Search box */
+.mc-search {
+  background: var(--card-bg);
+  border: 1px solid var(--glass-border);
+  padding: 8px 10px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 260px;
+  backdrop-filter: blur(8px);
+  transition: box-shadow var(--transition);
+}
+
+.mc-search input {
+  background: transparent;
+  border: 0;
+  color: var(--text);
+  outline: none;
+  font-size: 14px;
+  width: 220px;
+}
+
+/* Sort dropdown */
+.mc-sort {
+  background: var(--card-bg);
+  border: 1px solid var(--glass-border);
+  padding: 8px 10px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.mc-sort select {
+  background: transparent;
+  border: 0;
+  color: var(--text);
+  outline: none;
+}
+
+/* -------------------------
+   Main content: grid
+   ------------------------- */
+.mc-main {
+  margin-top: 18px;
+}
+
+/* Loading / Error / Empty */
+.mc-loading,
+.mc-empty,
+.mc-error {
+  max-width: var(--mc-max-width);
+  margin: 18px auto;
+  text-align: center;
+  color: var(--muted);
+  padding: 28px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border-radius: 12px;
+  border: 1px solid var(--glass-border);
+}
+
+/* spinner */
+.mc-spinner {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  margin: 0 auto 12px;
+  border: 4px solid rgba(255,255,255,0.06);
+  border-top-color: var(--accent);
+  animation: mc-spin 1s linear infinite;
+}
+@keyframes mc-spin {
+  to { transform: rotate(360deg); }
+}
+.mc-loading-text {
+  color: var(--muted);
+}
+
+/* GRID */
+.mc-grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(1, 1fr);
+}
+
+/* Responsive breakpoints - mobile-first */
+@media (min-width: 640px) {
+  .mc-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 1000px) {
+  .mc-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* Card */
+.mc-card {
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--glass-border);
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  will-change: transform;
+  position: relative;
+  backdrop-filter: blur(6px);
+}
+
+/* Hover elevation */
+.mc-card:hover,
+.mc-card:focus {
+  transform: translateY(-6px) scale(1.01);
+  border-color: rgba(124,92,255,0.5);
+  box-shadow: 0 18px 40px rgba(12,12,20,0.6);
+  outline: none;
+}
+
+/* Thumbnail */
+.mc-thumb-wrap {
+  position: relative;
+  overflow: hidden;
+  height: 0;
+  padding-bottom: 56.25%; /* 16:9 */
+  background: linear-gradient(90deg, rgba(0,0,0,0.05), rgba(0,0,0,0.05));
+}
+
+.mc-thumb {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* duration badge */
+.mc-duration-badge {
+  position: absolute;
+  right: 8px;
+  bottom: 8px;
+  background: rgba(0,0,0,0.6);
+  padding: 4px 8px;
+  font-size: 12px;
+  border-radius: 999px;
+  color: #fff;
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+/* Play overlay appears on hover */
+.mc-play-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity var(--transition);
+  pointer-events: none;
+}
+.mc-card:hover .mc-play-overlay,
+.mc-card:focus .mc-play-overlay {
+  opacity: 1;
+}
+
+/* Card body */
+.mc-card-body {
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-height: 140px;
+}
+
+/* Title: truncated to 2 lines */
+.mc-video-title {
+  font-size: 15px;
+  margin: 0;
+  line-height: 1.2;
+  max-height: 2.4em; /* 2 lines */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  color: var(--text);
+}
+
+/* Stats row */
+.mc-card-stats {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.mc-stat {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+/* Actions */
+.mc-card-actions {
+  margin-top: auto;
+  display: flex;
+  gap: 8px;
+}
+
+/* Buttons */
+.mc-btn {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  padding: 8px 10px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-size: 13px;
+  border: 1px solid transparent;
+  transition: transform var(--transition), box-shadow var(--transition), background var(--transition);
+  cursor: pointer;
+}
+
+.mc-btn-watch {
+  background: linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  color: var(--text);
+  border: 1px solid rgba(255,255,255,0.04);
+}
+
+.mc-btn-download {
+  background: rgba(124,92,255,0.12);
+  color: var(--accent);
+  border: 1px solid rgba(124,92,255,0.16);
+}
+
+.mc-btn:hover {
+  transform: translateY(-3px);
+}
+
+/* Footer */
+.mc-footer {
+  max-width: var(--mc-max-width);
+  margin: 20px auto 40px;
+  display: flex;
+  justify-content: space-between;
+  color: var(--muted);
+}
+
+/* Modal */
+.mc-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(5, 6, 10, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 2000;
+  animation: mc-fade-in 240ms ease;
+}
+
+@keyframes mc-fade-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.mc-modal {
+  background: linear-gradient(180deg, rgba(15,17,22,0.98), rgba(9,11,14,0.98));
+  border-radius: 14px;
+  width: min(1000px, 96%);
+  max-height: 90vh;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.04);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.7);
+}
+
+/* close button */
+.mc-modal-close {
+  background: transparent;
+  border: 0;
+  color: var(--muted);
+  position: absolute;
+  right: 20px;
+  top: 18px;
+  z-index: 10;
+  cursor: pointer;
+}
+
+/* modal content layout */
+.mc-modal-content {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 18px;
+  padding: 20px;
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .mc-modal-content {
+    grid-template-columns: 1fr;
+    padding: 12px;
+  }
+}
+
+/* player */
+.mc-player {
+  background: black;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  padding-top: 56.25%; /* 16:9 */
+}
+
+.mc-player iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* modal info */
+.mc-modal-info {
+  color: var(--text);
+  max-height: 66vh;
+  overflow: auto;
+  padding-right: 8px;
+}
+
+/* custom scrollbar for modal */
+.mc-modal-info::-webkit-scrollbar {
+  width: 10px;
+}
+.mc-modal-info::-webkit-scrollbar-thumb {
+  background: rgba(124,92,255,0.18);
+  border-radius: 999px;
+  border: 2px solid rgba(0,0,0,0.4);
+}
+
+/* title and stats */
+.mc-modal-title {
+  font-size: 18px;
+  margin: 0 0 10px;
+}
+.mc-modal-stats {
+  display: flex;
+  gap: 12px;
+  color: var(--muted);
+  margin-bottom: 12px;
+}
+
+/* description */
+.mc-modal-description pre {
+  white-space: pre-wrap;
+  line-height: 1.45;
+  color: var(--muted);
+  font-size: 14px;
+  margin: 0 0 12px;
+}
+
+/* modal actions */
+.mc-modal-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+/* small utilities */
+a { color: inherit; }
