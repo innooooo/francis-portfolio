@@ -8,6 +8,9 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+  "eslintConfig": {
+    "plugins": [ "react", "react-hooks" ] 
+  },
   "dependencies": {
     "lucide-react": "^0.553.0",
     "react-router-dom": "^7.9.5",
