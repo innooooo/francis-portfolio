@@ -9,9 +9,13 @@
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
-    "plugins": [ "react", "react-hooks" ] 
+    "plugins": [
+      "react",
+      "react-hooks"
+    ]
   },
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
     "lucide-react": "^0.553.0",
     "react-router-dom": "^7.9.5",
     "react-scripts": "^5.0.1",

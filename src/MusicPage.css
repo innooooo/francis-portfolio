@@ -1,27 +1,30 @@
 /* MusicCatalog.css */
+/*
+Primary: #6c63ff (Vibrant purple)
+Secondary: #ff6584 (Coral pink)
+accent: #4ECDC4 (Turquoise)
+dark: #2D3561 (Deep Navy)
+light: #F7F7FF (Off-white)
+text: #2C2C2C (Charcoal)
+success: #4CAF50 (Green)
+*/
 
-/* -------------------------
-   Root / variables
-   ------------------------- */
+/* Root variables */
 :root {
-  --bg: #0f1724;
   --card-bg: rgba(255, 255, 255, 0.04);
-  --muted: #9aa4b2;
-  --accent: #7c5cff;
+  --accent: #4ECDC4;
+  --muted: #2D3561;
+  --success: #4CAF50;
   --glass-border: rgba(255,255,255,0.06);
   --glass-shadow: 0 6px 20px rgba(12, 14, 20, 0.6);
   --transition: 300ms;
   --radius: 12px;
   --mc-max-width: 1200px;
-  --text: #e6eef8;
+  --text: #2C2C2C;
 }
 
-/* -------------------------
-   Base layout
-   ------------------------- */
 .music-catalog-root {
   color: var(--text);
-  background: linear-gradient(180deg, rgba(11,12,16,1) 0%, rgba(5,7,10,1) 100%);
   min-height: 100vh;
   padding: 24px;
   font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
@@ -35,9 +38,6 @@
   margin: 0 auto 18px;
 }
 
-/* -------------------------
-   Header: channel info & controls
-   ------------------------- */
 .mc-header {
   display: flex;
   gap: 16px;
@@ -61,7 +61,7 @@
   flex-shrink: 0;
   box-shadow: var(--glass-shadow);
   border: 1px solid var(--glass-border);
-  background: linear-gradient(135deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  background: linear-gradient(135deg, rgba(255,255,255,0.01), rgba(255,255,255,0.01));
   display: flex;
   align-items: center;
   justify-content: center;
@@ -76,7 +76,6 @@
 .mc-avatar-placeholder {
   font-weight: 700;
   font-size: 26px;
-  color: var(--muted);
 }
 
 .mc-channel-meta .mc-channel-title {
@@ -142,9 +141,6 @@
   outline: none;
 }
 
-/* -------------------------
-   Main content: grid
-   ------------------------- */
 .mc-main {
   margin-top: 18px;
 }
@@ -214,7 +210,7 @@
 .mc-card:hover,
 .mc-card:focus {
   transform: translateY(-6px) scale(1.01);
-  border-color: rgba(124,92,255,0.5);
+  border-color: #6c63ff;
   box-shadow: 0 18px 40px rgba(12,12,20,0.6);
   outline: none;
 }
@@ -246,7 +242,7 @@
   padding: 4px 8px;
   font-size: 12px;
   border-radius: 999px;
-  color: #fff;
+  color: #F7F7FF;
   backdrop-filter: blur(4px);
   border: 1px solid rgba(255,255,255,0.06);
 }
@@ -261,10 +257,6 @@
   opacity: 0;
   transition: opacity var(--transition);
   pointer-events: none;
-}
-.mc-card:hover .mc-play-overlay,
-.mc-card:focus .mc-play-overlay {
-  opacity: 1;
 }
 
 /* Card body */
@@ -328,13 +320,13 @@
 
 .mc-btn-watch {
   background: linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-  color: var(--text);
+  color: #6c63ff;
   border: 1px solid rgba(255,255,255,0.04);
 }
 
 .mc-btn-download {
-  background: rgba(124,92,255,0.12);
-  color: var(--accent);
+  background: rgba(124,92,255,0.01);
+  color: #ff6584;
   border: 1px solid rgba(124,92,255,0.16);
 }
 
@@ -348,7 +340,7 @@
   margin: 20px auto 40px;
   display: flex;
   justify-content: space-between;
-  color: var(--muted);
+  color: var(--text);
 }
 
 /* Modal */

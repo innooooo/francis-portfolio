@@ -12,16 +12,11 @@ import {
 } from "lucide-react";
 import "../MusicPage.css";
 
-/**
- * CONFIG:
- * - Insert your YOUTUBE_API_KEY and optionally CHANNEL_ID or CHANNEL_HANDLE
- * - If CHANNEL_ID is empty, component will try to detect it via CHANNEL_HANDLE
- */
 const CONFIG = {
   YOUTUBE_API_KEY: "AIzaSyB1Bg552PcG5Gu-2BJ0ilHMuedXQgbcc5E",
-  CHANNEL_ID: "", // <-- Optionally paste the channel ID here (e.g., UCxxxx)
-  CHANNEL_HANDLE: "@franciskogi", // <-- Example handle. Try to keep @ prefix.
-  MAX_RESULTS_PER_PAGE: 50, // YouTube max for search is 50
+  CHANNEL_ID: "",
+  CHANNEL_HANDLE: "@franciskogi",
+  MAX_RESULTS_PER_PAGE: 50,
 };
 
 // ---------- Utility functions ----------
@@ -67,7 +62,7 @@ export function formatDate(isoString) {
 
 /** Get download link(s). Default using Y2Mate; commented alternatives are provided. */
 export function getDownloadLink(videoId) {
-  return `https://y2mate.com/youtube/${videoId}`;
+  return `https://y4kconvert.com/youtube/${videoId}`;
   // Alternatives (commented):
   // return `https://ytmp3.plus/en19/${videoId}`; // YTMP3 style (may vary)
   // return `https://en.savefrom.net/1-${videoId}`; // SaveFrom.net pattern (check site)
@@ -381,8 +376,8 @@ export default function MusicCatalog() {
               onChange={(e) => setSortBy(e.target.value)}
               aria-label="Sort videos"
             >
-              <option value="latest">Latest</option>
               <option value="mostViewed">Most Viewed</option>
+              <option value="latest">Latest</option>
               <option value="alpha">A - Z</option>
             </select>
           </div>
