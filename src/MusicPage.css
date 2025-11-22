@@ -29,12 +29,12 @@ success: #4CAF50 (Green)
   padding: 24px;
   font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
   box-sizing: border-box;
-  width: 40vh;
+  width: 55vh;
 }
 /* center content */
 .mc-header,
 .mc-main {
-  max-width: var(--mc-max-width);
+  max-width: 55vh;
   margin: 0 auto 18px;
 }
 
