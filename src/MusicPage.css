@@ -29,12 +29,11 @@ success: #4CAF50 (Green)
   padding: 24px;
   font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
   box-sizing: border-box;
-  width: 55vh;
 }
 /* center content */
 .mc-header,
 .mc-main {
-  max-width: 55vh;
+  max-width: 100vh;
   margin: 0 auto 18px;
 }
 
@@ -364,7 +363,6 @@ success: #4CAF50 (Green)
 .mc-modal {
   background: linear-gradient(180deg, rgba(15,17,22,0.98), rgba(9,11,14,0.98));
   border-radius: 14px;
-  width: min(1000px, 96%);
   max-height: 90vh;
   overflow: hidden;
   border: 1px solid rgba(255,255,255,0.04);
