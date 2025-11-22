@@ -19,7 +19,7 @@ success: #4CAF50 (Green)
   --glass-shadow: 0 6px 20px rgba(12, 14, 20, 0.6);
   --transition: 300ms;
   --radius: 12px;
-  --mc-max-width: 1200px;
+  --mc-max-width: 100vh;
   --text: #2C2C2C;
 }
 
